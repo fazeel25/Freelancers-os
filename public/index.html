@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="A private, browser-based command center for freelance projects, clients, invoices and proposals."/>
+  <meta name="theme-color" content="#171229"/><title>Orbit — Freelancers OS</title>
+  <link rel="manifest" href="manifest.webmanifest"/><link rel="icon" href="icon.svg" type="image/svg+xml"/><link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="logo" href="#overview"><span>O</span>Orbit</a>
+      <p class="workspace-label">FREELANCER WORKSPACE</p>
+      <nav><a class="active" href="#overview">Overview</a><a href="#projects">Projects</a><a href="#tasks">Tasks</a><a href="#invoices">Invoices</a><a href="#proposal">Proposal studio</a></nav>
+      <div class="privacy"><b>Local-first</b><p>Your business data stays in this browser.</p></div>
+    </aside>
+    <main id="overview">
+      <header><div><p class="kicker">Friday command center</p><h1>Good morning, Fazeel.</h1><p class="sub">Know what needs attention—and what is already working.</p></div><button class="primary" id="open-project">+ New project</button></header>
+      <section class="metric-grid">
+        <article><span>Revenue collected</span><strong id="revenue-total">PKR 0</strong><small>Paid invoices</small></article>
+        <article><span>Pipeline value</span><strong id="pipeline-total">PKR 0</strong><small>Active projects</small></article>
+        <article><span>Open tasks</span><strong id="open-task-count">0</strong><small id="due-label">Stay focused</small></article>
+        <article><span>Collection rate</span><strong id="collection-rate">0%</strong><small>Invoice performance</small></article>
+      </section>
+
+      <section class="grid" id="projects">
+        <article class="panel wide">
+          <div class="panel-head"><div><p class="kicker">Delivery pipeline</p><h2>Active projects</h2></div><button class="text-btn" id="open-project-2">Add project</button></div>
+          <div id="project-list" class="project-list"></div>
+        </article>
+        <article class="panel focus" id="tasks">
+          <div class="panel-head"><div><p class="kicker">Today</p><h2>Focus list</h2></div><button class="text-btn" id="add-task">+ Task</button></div>
+          <div id="task-list" class="task-list"></div>
+        </article>
+      </section>
+
+      <section class="grid lower">
+        <article class="panel" id="invoices">
+          <div class="panel-head"><div><p class="kicker">Cash flow</p><h2>Invoices</h2></div><button class="text-btn" id="add-invoice">+ Invoice</button></div>
+          <div class="table-wrap"><table><thead><tr><th>Client</th><th>Amount</th><th>Status</th><th>Due</th></tr></thead><tbody id="invoice-list"></tbody></table></div>
+        </article>
+        <article class="panel proposal" id="proposal">
+          <div class="panel-head"><div><p class="kicker">Smart templates</p><h2>Proposal studio</h2></div><span class="spark">AI-style</span></div>
+          <div class="form-grid"><label>Client<input id="proposal-client" placeholder="Client name"/></label><label>Project<input id="proposal-project" placeholder="e.g. café website"/></label><label>Deliverable<input id="proposal-service" placeholder="Design and development"/></label><label>Timeline<input id="proposal-timeline" placeholder="10 working days"/></label><label>Price (PKR)<input id="proposal-price" type="number" value="50000"/></label></div>
+          <button class="primary full" id="generate-proposal">Generate proposal</button>
+          <div class="proposal-output" id="proposal-output"><p>Complete the fields to generate a client-ready proposal.</p></div>
+          <button class="secondary full" id="copy-proposal">Copy proposal</button>
+        </article>
+      </section>
+      <footer>Orbit Freelancers OS · Your private business dashboard</footer>
+    </main>
+  </div>
+
+  <dialog id="entry-dialog">
+    <form method="dialog" id="entry-form">
+      <div class="dialog-head"><div><p class="kicker" id="dialog-kicker">New record</p><h2 id="dialog-title">Add project</h2></div><button value="cancel" class="close" aria-label="Close">×</button></div>
+      <div id="dialog-fields"></div>
+      <menu><button value="cancel" class="secondary">Cancel</button><button value="default" class="primary" id="save-entry">Save</button></menu>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
